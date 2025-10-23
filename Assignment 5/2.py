@@ -7,4 +7,4 @@ while True:
         n = int(n)
         num.append(n)
 num.sort(reverse=True)
-print(num)
+print(num[:5])
