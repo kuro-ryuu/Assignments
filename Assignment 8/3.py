@@ -17,22 +17,17 @@ cursor = connection.cursor()
 ident  = str(input("Enter first ICAO code: ")).upper()
 ident2 = str(input("Enter second ICAO code: ")).upper()
 
-query_lat = "SELECT latitude_deg FROM airport WHERE ident = %s"
-query_long = "SELECT longitude_deg FROM airport WHERE ident = %s"
+query = "SELECT latitude_deg, longitude_deg FROM airport WHERE ident = %s"
 
-cursor.execute(query_lat, (ident,))
-row1_lat = cursor.fetchone()
-cursor.execute(query_long, (ident,))
-row1_long = cursor.fetchone()
+cursor.execute(query, (ident,))
+row1 = cursor.fetchone()
 
-cursor.execute(query_lat, (ident2,))
-row2_lat = cursor.fetchone()
-cursor.execute(query_long, (ident2,))
-row2_long = cursor.fetchone()
+cursor.execute(query, (ident2,))
+row2 = cursor.fetchone()
 
-if row1_lat is None or row1_long is None or row2_lat is None or row2_long is None:
+if row1 is None or row2 is None:
     print("Airport not found.")
 else:
-    coord1 = (row1_lat[0], row1_long[0])
-    coord2 = (row2_lat[0], row2_long[0])
+    coord1 = (row1[0], row1[1])
+    coord2 = (row2[0], row2[1])
     print(f"The distance between the airports is {geopy.distance.distance(coord1, coord2).km} km.")
