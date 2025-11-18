@@ -1,15 +1,6 @@
-import mysql.connector, geopy
+import geopy
+from db import connect_to_db
 from geopy import distance
-
-def connect_to_db():
-    return mysql.connector.connect(
-        host="localhost",
-        user="CDKR",
-        password="1507",
-        database="flight_game",
-        port=3306,
-        autocommit=True,
-    )
 
 connection = connect_to_db()
 cursor = connection.cursor()
