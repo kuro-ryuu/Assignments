@@ -41,8 +41,6 @@ for n in numbers:
         
 race(cars)
 
-print(f"{'Registration':<16} {'Max Speed':<14} {'Covered Distance':<10}")
+print(f"{'Registration':<16} {'Max Speed':<14} {'Last Recorded Speed':<23} {'Covered Distance'}")
 for c in cars:
-    print(f"{c.registration:<16} {c.max_speed:<14} {c.traveled_distance:<10}")
-
-
+    print(f"{c.registration:<16} {c.max_speed:<14} {c.speed:<23} {c.traveled_distance}")
