@@ -14,6 +14,11 @@ const students = [
   },
 ];
 
-for (let student of students) {
-  document.getElementById("target").innerHTML += `<option value="${student.id}">${student.name}</option>`;
+const select =document.getElementById("target")
+
+for (let i = 0; i < students.length; i++) {
+  const option = document.createElement("option");
+  option.value = students[i].id;
+  option.textContent = students[i].name;
+  select.appendChild(option);
 }
